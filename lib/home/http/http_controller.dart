@@ -1,16 +1,15 @@
 import 'package:get/get.dart';
-import 'package:poc_pattern_example/repository/i_user_repository.dart';
+import 'package:poc_pattern_example/repository/i_servidor_repository.dart';
 
 class HttpController extends GetxController with StateMixin {
-  final IUserRepository _httpRepository;
+  final IServidorRepository _httpRepository;
 
   HttpController(this._httpRepository);
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
-    findUsers();
+    findByCpf();
   }
 
   Future<void> findUsers() async {
@@ -19,7 +18,19 @@ class HttpController extends GetxController with StateMixin {
       final dados = await _httpRepository.findAllUsers();
       change(dados, status: RxStatus.success());
     } catch (e) {
-      change([], status: RxStatus.error());
+      print(e);
+      change([], status: RxStatus.error('Erro ao buscar usuários'));
+    }
+  }
+
+  Future<void> findByCpf() async {
+    change([], status: RxStatus.loading());
+    try {
+      final dados = await _httpRepository.findUserByCpf('02221887310');
+      change(dados, status: RxStatus.success());
+    } catch (e) {
+      print(e);
+      change([], status: RxStatus.error('Erro ao buscar usuário'));
     }
   }
 }
