@@ -19,10 +19,12 @@ class UserRepositoryDio implements IServidorRepository {
       final reponse = await _dio.get<ServidorModel>(
           'http://localhost:8080/cache/api/servidores/by-cpf-dto/$cpf');
       return reponse.data;
-    } on DioError catch (e) {
-      if (e.response?.statusCode == 500) {
-        throw Exception('Problema no servidor');
-      }
+    } catch (e) {
+      // if (e.response?.statusCode == 500) {
+      //   throw Exception('Problema no servidor');
+      // }
+      print(e);
+      rethrow;
     }
   }
 }

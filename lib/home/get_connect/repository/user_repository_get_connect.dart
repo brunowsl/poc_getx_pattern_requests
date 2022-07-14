@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:poc_pattern_example/clients/rest_client.dart';
 import 'package:poc_pattern_example/model/servidor_model.dart';
 
