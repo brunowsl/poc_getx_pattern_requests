@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:poc_pattern_example/model/servidor_model.dart';
 
-import 'http_controller.dart';
+import '../../model/servidor_model.dart';
+import 'dio_controller.dart';
 
-class HttpPage extends GetView<HttpController> {
-  const HttpPage({Key? key}) : super(key: key);
+class DioPage extends GetView<DioController> {
+  const DioPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HTTP'),
+        title: const Text('Dio Page'),
       ),
       body: controller.obx((state) {
         final ServidorModel user = state;

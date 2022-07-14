@@ -18,10 +18,15 @@ class UserHttpRepository implements IServidorRepository {
 
   @override
   Future<ServidorModel> findUserByCpf(String cpf) async {
-    final response = await http.get(Uri.parse(
-        'http://localhost:8080/cache/api/servidores/by-cpf-dto/$cpf'));
-    print(response.body);
-    final responseMap = jsonDecode(response.body);
-    return ServidorModel.fromMap(responseMap);
+    try {
+      final response = await http.get(Uri.parse(
+          'http://localhost:8080/cache/api/servidores/by-cpf-dto/$cpf'));
+      print(response.body);
+      final responseMap = jsonDecode(response.body);
+      return ServidorModel.fromMap(responseMap);
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
   }
 }

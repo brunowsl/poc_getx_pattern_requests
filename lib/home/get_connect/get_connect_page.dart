@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:poc_pattern_example/model/servidor_model.dart';
+import 'package:poc_pattern_example/home/get_connect/get_connect_controller.dart';
 
-import 'http_controller.dart';
+import '../../model/servidor_model.dart';
 
-class HttpPage extends GetView<HttpController> {
-  const HttpPage({Key? key}) : super(key: key);
+class GetConnectPage extends GetView<GetConnectController> {
+  const GetConnectPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HTTP'),
+        title: const Text('GetConnectPage'),
       ),
       body: controller.obx((state) {
         final ServidorModel user = state;
